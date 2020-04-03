@@ -18,7 +18,8 @@ import styles from 'assets/jss/material-dashboard-react/views/dashboardStyle.js'
 
 const useStyles = makeStyles(styles)
 
-export default function Dashboard() {
+const Dashboard = props => {
+  console.log('DASHBOARD', props)
   const classes = useStyles()
   return (
     <div style={{ paddingTop: '50px' }}>
@@ -78,3 +79,5 @@ export default function Dashboard() {
     </div>
   )
 }
+
+export default Dashboard

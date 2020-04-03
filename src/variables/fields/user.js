@@ -4,59 +4,85 @@ export default {
     elementType: 'input',
     elementConfig: {
       type: 'text',
-      name: 'id'
+      name: 'id',
+      required: true
     },
     value: '',
     validation: {
-      isText: true
-    }
+      isNumeric: true,
+      required: true
+    },
+    valid: false,
+    touched: false,
+    error: null
   },
   name: {
     elementLabel: 'Nombre',
     elementType: 'input',
     elementConfig: {
       type: 'text',
-      name: 'name'
+      name: 'name',
+      required: true
     },
     value: '',
     validation: {
-      isText: true
-    }
+      isText: true,
+      required: true
+    },
+    valid: false,
+    touched: false,
+    error: null
   },
   lastname: {
     elementLabel: 'Apellido',
     elementType: 'input',
     elementConfig: {
       type: 'text',
-      name: 'lastname'
+      name: 'lastname',
+      required: true
     },
     value: '',
     validation: {
-      isText: true
-    }
+      isText: true,
+      required: true
+    },
+    valid: false,
+    touched: false,
+    error: null
   },
   address: {
     elementLabel: 'Dirección',
     elementType: 'input',
     elementConfig: {
       type: 'text',
-      name: 'address'
+      name: 'address',
+      required: true
     },
     value: '',
     validation: {
-      isText: true
-    }
+      isText: true,
+      required: true
+    },
+    valid: false,
+    touched: false,
+    error: null
   },
   mail: {
     elementLabel: 'Correo',
     elementType: 'input',
     elementConfig: {
       type: 'text',
-      name: 'mail'
+      name: 'mail',
+      required: true
     },
     value: '',
     validation: {
-      isText: true
-    }
+      isText: true,
+      required: true,
+      isEmail: true
+    },
+    valid: false,
+    touched: false,
+    error: null
   }
 }

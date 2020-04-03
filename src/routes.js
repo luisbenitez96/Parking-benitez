@@ -6,7 +6,7 @@ import LocationOn from '@material-ui/icons/LocationOn'
 import UserPage from './views/User'
 import BalancePage from './views/Balance'
 import VehiculosPage from './views/Vehiculos'
-import DashboardPage from 'views/Dashboard/Dashboard.js'
+import DashboardPage from './views/Dashboard/Dashboard.js'
 
 const dashboardRoutes = [
   {

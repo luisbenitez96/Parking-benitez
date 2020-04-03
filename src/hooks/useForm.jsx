@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { checkValidation } from '../variables/formValidity'
 
 const useForm = fieldForm => {
   const [fieldState, setFieldState] = useState({ ...fieldForm })
+  const [formIsValid, setFormIsValid] = useState(false)
 
   const onRender = () => {
     const formElementsArr = []
@@ -36,16 +38,33 @@ const useForm = fieldForm => {
     setFieldState(loadForm)
   }
 
+  const handlerFormValidation = form => {
+    let isValidForm = true
+    for (const inputElement in form) {
+      isValidForm = isValidForm && form[inputElement].valid
+    }
+    return isValidForm
+  }
+
   const onChanged = (ev, id) => {
     const inputValue = ev.target.value
+    let validation = {
+      isValid: true,
+      error: false
+    }
+    validation = checkValidation(inputValue, fieldState[id].validation)
     const formData = {
       ...fieldState,
       [id]: {
         ...fieldState[id],
-        value: inputValue
+        value: inputValue,
+        valid: validation.isValid,
+        touched: true,
+        error: validation.error
       }
     }
     setFieldState(formData)
+    setFormIsValid(handlerFormValidation(formData))
   }
 
   const onLoad = data => {
@@ -61,7 +80,8 @@ const useForm = fieldForm => {
     getJson,
     onReset,
     onLoad,
-    getFormData
+    getFormData,
+    formIsValid
   }
 }
 

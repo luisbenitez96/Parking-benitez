@@ -48,7 +48,7 @@ const VehiculosData = props => {
             marginTop: '10px'
           }}
         >
-          <Button color='success' type='submit'>
+          <Button color='success' type='submit' disabled={!form.formIsValid}>
             {selected ? 'Editar' : 'Crear'}
           </Button>
         </GridItem>
