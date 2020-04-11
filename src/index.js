@@ -10,6 +10,8 @@ import 'assets/css/material-dashboard-react.css?v=1.8.0'
 import { FirebaseProvider } from './context/firebase'
 import { UserProvider } from './context/user'
 
+
+
 const hist = createBrowserHistory()
 
 ReactDOM.render(

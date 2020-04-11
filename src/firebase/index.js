@@ -9,6 +9,7 @@ import functions from "./functions";
 
 import {firebaseConfig} from "./config"
 
+
 const FruteandoFirebaseApp = (config) => {
   // Initialize Firebase App
 
@@ -32,3 +33,6 @@ const FruteandoFirebaseApp = (config) => {
 const createFirebase = () => FruteandoFirebaseApp(firebaseConfig());
 
 export default createFirebase;
+
+
+
