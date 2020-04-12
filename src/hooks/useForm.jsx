@@ -69,7 +69,6 @@ const useForm = fieldForm => {
 
   const onLoad = data => {
     const loadForm = { ...fieldState }
-    console.log(data)
     Object.keys(loadForm).map((key, indx) => (loadForm[key].value = data[indx]))
     setFieldState(loadForm)
   }

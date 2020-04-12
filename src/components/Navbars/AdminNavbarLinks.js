@@ -10,13 +10,13 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Hidden from '@material-ui/core/Hidden'
 import Poppers from '@material-ui/core/Popper'
 import Divider from '@material-ui/core/Divider'
-
 import Person from '@material-ui/icons/Person'
 import Notifications from '@material-ui/icons/Notifications'
 import Search from '@material-ui/icons/Search'
 
 import CustomInput from 'components/CustomInput/CustomInput.js'
 import Button from 'components/CustomButtons/Button.js'
+import { useUser } from 'context/user'
 
 import styles from 'assets/jss/material-dashboard-react/components/headerLinksStyle.js'
 
@@ -24,6 +24,7 @@ const useStyles = makeStyles(styles)
 
 export default function AdminNavbarLinks() {
   const classes = useStyles()
+  const [user, dispatchUser] = useUser()
   const [openNotification, setOpenNotification] = React.useState(null)
   const [openProfile, setOpenProfile] = React.useState(null)
   const handleClickNotification = event => {
@@ -168,7 +169,7 @@ export default function AdminNavbarLinks() {
               <Paper>
                 <ClickAwayListener onClickAway={handleCloseProfile}>
                   <MenuList role='menu'>
-                    <MenuItem
+                    {/* <MenuItem
                       onClick={handleCloseProfile}
                       className={classes.dropdownItem}
                     >
@@ -179,10 +180,12 @@ export default function AdminNavbarLinks() {
                       className={classes.dropdownItem}
                     >
                       Configuración
-                    </MenuItem>
+                    </MenuItem> */}
                     <Divider light />
                     <MenuItem
-                      onClick={handleCloseProfile}
+                      onClick={() => {
+                        dispatchUser.logout()
+                      }}
                       className={classes.dropdownItem}
                     >
                       Cerrar sesión

@@ -1,5 +1,5 @@
 export default {
-  plava: {
+  placa: {
     elementLabel: 'Placa',
     elementType: 'input',
     elementConfig: {

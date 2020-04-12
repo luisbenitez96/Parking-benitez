@@ -1,19 +1,14 @@
 import React, { useState } from 'react'
 
-import { makeStyles } from '@material-ui/core/styles'
+import TextField from '@material-ui/core/TextField'
 
 import { useUser } from 'context/user'
 
 import GridItem from 'components/Grid/GridItem.js'
 import GridContainer from 'components/Grid/GridContainer.js'
-import Card from 'components/Card/Card.js'
-import CardFooter from 'components/Card/CardFooter.js'
+import Button from '../../components/CustomButtons/Button'
 
-import styles from 'assets/jss/material-dashboard-react/views/dashboardStyle.js'
-
-const useStyles = makeStyles(styles)
 const Login = () => {
-  const classes = useStyles()
   const [formCreateUser, setFormCreateUser] = useState({
     email: '',
     password: '',
@@ -23,7 +18,7 @@ const Login = () => {
   const [formLogin, setLogin] = useState({ email: '', password: '' })
 
   const [user, dispatchUser] = useUser()
-  console.log({ user, dispatchUser })
+
   const onChangeFormCreateUser = ev => {
     const value = ev.target.value
     const name = ev.target.name
@@ -61,69 +56,126 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <GridContainer>
-        <button
-          onClick={() => {
-            dispatchUser.logout()
-          }}
-        >
-          LOGOUT
-        </button>
-
-        <input
-          type='text'
-          name='email'
-          placeholder='email'
-          value={formCreateUser.email}
-          onChange={onChangeFormCreateUser}
-        />
-        <input
-          type='text'
-          name='password'
-          placeholder='password'
-          value={formCreateUser.password}
-          onChange={onChangeFormCreateUser}
-        />
-        <input
-          type='text'
-          name='phone'
-          placeholder='phone'
-          value={formCreateUser.phone}
-          onChange={onChangeFormCreateUser}
-        />
-        <input
-          type='text'
-          name='fullName'
-          placeholder='fullName'
-          value={formCreateUser.fullName}
-          onChange={onChangeFormCreateUser}
-        />
-        <button onClick={createUser}>Crear usuario</button>
-        <GridItem xs={12} sm={6} md={4}>
-          <Card>
-            <p className={classes.cardCategory}>Login</p>
-            <CardFooter>
-              <input
+    <>
+      <GridContainer
+        style={{
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignContent: 'center',
+          padding: '150px'
+        }}
+      >
+        <GridItem xs={12} sm={6}>
+          <GridItem
+            xs={12}
+            style={{ display: 'flex', justifyContent: 'center' }}
+          >
+            <h3>Iniciar sesión</h3>
+          </GridItem>
+          <GridContainer spacing={3}>
+            <GridItem xs={12}>
+              <TextField
+                variant='outlined'
+                autoComplete='none'
                 type='text'
                 name='email'
-                placeholder='email'
+                placeholder='Email'
+                style={{ width: '100%' }}
                 value={formLogin.email}
                 onChange={onChangeFormLogin}
               />
-              <input
+            </GridItem>
+            <GridItem xs={12}>
+              <TextField
+                variant='outlined'
+                autoComplete='none'
                 type='text'
                 name='password'
-                placeholder='password'
+                placeholder='Contraseña'
+                style={{ width: '100%' }}
                 value={formLogin.password}
                 onChange={onChangeFormLogin}
               />
-              <button onClick={login}>Iniciar sesion</button>
-            </CardFooter>
-          </Card>
+            </GridItem>
+            <GridItem
+              xs={12}
+              style={{ display: 'flex', justifyContent: 'center' }}
+            >
+              <Button color='success' onClick={login}>
+                Iniciar sesión
+              </Button>
+            </GridItem>
+          </GridContainer>
+        </GridItem>
+        <GridItem xs={12} sm={6}>
+          <GridItem
+            xs={12}
+            style={{ display: 'flex', justifyContent: 'center' }}
+          >
+            <h3>Crear cuenta</h3>
+          </GridItem>
+          <GridContainer spacing={3}>
+            <GridItem xs={12}>
+              <TextField
+                variant='outlined'
+                autoComplete='none'
+                type='text'
+                style={{ width: '100%' }}
+                name='email'
+                placeholder='Email'
+                value={formCreateUser.email}
+                onChange={onChangeFormCreateUser}
+              />
+            </GridItem>
+            <GridItem xs={12}>
+              <TextField
+                variant='outlined'
+                autoComplete='none'
+                type='text'
+                style={{ width: '100%' }}
+                name='password'
+                placeholder='Contraseña'
+                value={formCreateUser.password}
+                onChange={onChangeFormCreateUser}
+              />
+            </GridItem>
+            <GridItem xs={12} sm={6}>
+              <TextField
+                variant='outlined'
+                autoComplete='none'
+                type='text'
+                style={{ width: '100%' }}
+                name='phone'
+                placeholder='Celular'
+                value={formCreateUser.phone}
+                onChange={onChangeFormCreateUser}
+              />
+            </GridItem>
+            <GridItem xs={12} sm={6}>
+              <TextField
+                variant='outlined'
+                autoComplete='none'
+                type='text'
+                name='fullName'
+                style={{ width: '100%' }}
+                placeholder='Nombre completo'
+                value={formCreateUser.fullName}
+                onChange={onChangeFormCreateUser}
+              />
+            </GridItem>
+            <GridItem
+              xs={12}
+              style={{ display: 'flex', justifyContent: 'center' }}
+            >
+              <Button color='success' onClick={createUser}>
+                Crear cuenta
+              </Button>
+            </GridItem>
+          </GridContainer>
         </GridItem>
       </GridContainer>
-    </div>
+    </>
   )
 }
 

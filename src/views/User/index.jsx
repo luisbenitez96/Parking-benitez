@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -16,9 +16,23 @@ import styles from 'assets/jss/material-dashboard-react/views/dashboardStyle.js'
 import { userData } from '../../variables/tableData'
 import UserDataPage from './UserData'
 
+import { useFirebase } from '../../context/firebase'
+
 const useStyles = makeStyles(styles)
 
 export default function User() {
+  const firebase = useFirebase()
+
+  // useEffect(() => {
+  //   let unsubscribe = firebase.usersData().onSnapshot(snapshot => {
+  //     if (snapshot.exists) {
+  //       const data = snapshot.data()
+  //      // setUser(data)
+  //     }
+  //   })
+  //   console.log('TEST', unsubscribe)
+  // }, [])
+
   const [modal, setModal] = useState(false)
   const [selected, setSelected] = useState(null)
   const [data, setData] = useState(userData)
