@@ -24,11 +24,11 @@ const Routes = _ => {
     return (
       <Switch>
         <Route path={`/login`} render={props => <Login {...props} />} />
-        <Redirect to='/' />
+        <Redirect to='/login' />
       </Switch>
     )
   }
-  console.log(user)
+
   return (
     <>
       {user.status !== 'loggedOut' ? (

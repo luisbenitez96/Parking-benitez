@@ -1,3 +1,5 @@
+import { getFullDateNow } from '../../variables/utils'
+
 export default {
   placa: {
     elementLabel: 'Placa',
@@ -65,6 +67,23 @@ export default {
     },
     valid: false,
     touched: false,
+    error: null
+  },
+  date: {
+    elementLabel: 'Fecha y hora de ingreso',
+    elementType: 'date-time',
+    elementConfig: {
+      type: 'date-time',
+      name: 'date',
+      required: true
+    },
+    value: getFullDateNow(),
+    validation: {
+      isText: true,
+      required: true
+    },
+    valid: true,
+    touched: true,
     error: null
   }
 }

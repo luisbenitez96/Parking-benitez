@@ -74,7 +74,13 @@ export default function User() {
           <CardBody>
             <Table
               tableHeaderColor='success'
-              tableHead={['Placa', 'Cuidad', 'Departamento', 'Propietario']}
+              tableHead={[
+                'Placa',
+                'Cuidad',
+                'Departamento',
+                'Propietario',
+                'Fecha de ingreso'
+              ]}
               tableData={data}
               onRemove={onRemove}
               onEdit={handleModal}

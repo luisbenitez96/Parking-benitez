@@ -1,5 +1,7 @@
 import { useState } from 'react'
+
 import { checkValidation } from '../variables/formValidity'
+import { getSpecificFullDate } from '../variables/utils'
 
 const useForm = fieldForm => {
   const [fieldState, setFieldState] = useState({ ...fieldForm })
@@ -47,12 +49,17 @@ const useForm = fieldForm => {
   }
 
   const onChanged = (ev, id) => {
-    const inputValue = ev.target.value
+    let inputValue = null
     let validation = {
       isValid: true,
       error: false
     }
-    validation = checkValidation(inputValue, fieldState[id].validation)
+    if (ev.target) {
+      inputValue = ev.target.value
+      validation = checkValidation(inputValue, fieldState[id].validation)
+    } else {
+      inputValue = ev
+    }
     const formData = {
       ...fieldState,
       [id]: {
@@ -67,10 +74,28 @@ const useForm = fieldForm => {
     setFormIsValid(handlerFormValidation(formData))
   }
 
+  const checkOnLoadValue = (type, data) => {
+    if (type == 'date-time') return getSpecificFullDate(data)
+    else return data
+  }
+
   const onLoad = data => {
     const loadForm = { ...fieldState }
-    Object.keys(loadForm).map((key, indx) => (loadForm[key].value = data[indx]))
+    let i = 0
+    for (const formElement in fieldState) {
+      loadForm[formElement] = {
+        ...fieldState[formElement],
+        value: checkOnLoadValue(
+          loadForm[formElement].elementConfig.type,
+          data[i]
+        ),
+        touched: true,
+        valid: true
+      }
+      i++
+    }
     setFieldState(loadForm)
+    setFormIsValid(true)
   }
 
   return {

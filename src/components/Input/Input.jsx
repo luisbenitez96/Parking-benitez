@@ -1,7 +1,10 @@
 import React from 'react'
+import MomentUtils from '@date-io/moment'
+
 import TextField from '@material-ui/core/TextField'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
+import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
 
 const InputCustom = ({
   elementType,
@@ -50,6 +53,20 @@ const InputCustom = ({
           ))}
         </TextField>
       )
+      break
+
+    case 'date-time':
+      inputElement = (
+        <MuiPickersUtilsProvider utils={MomentUtils}>
+          <DateTimePicker
+            {...elementConfig}
+            {...props}
+            inputVariant='outlined'
+            format='YYYY-MM-DD, hh:mm a'
+          />
+        </MuiPickersUtilsProvider>
+      )
+
       break
     default:
       inputElement = <input {...elementConfig} {...props} autoComplete='none' />

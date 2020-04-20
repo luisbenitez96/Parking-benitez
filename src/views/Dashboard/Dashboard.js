@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from '@material-ui/core/Link'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Icon from '@material-ui/core/Icon'
@@ -36,7 +37,7 @@ const Dashboard = _ => {
             <CardFooter stats>
               <div className={classes.stats}>
                 <ChevronRight />
-                <a href='/admin/usuarios'>Ir a seccion de usuarios</a>
+                <Link href='/admin/usuarios'>Ir a seccion de usuarios</Link>
               </div>
             </CardFooter>
           </Card>
