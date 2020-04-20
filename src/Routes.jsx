@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 
-import Admin from 'layouts/Admin.js'
 import Login from './views/Login/Login'
-import { useUser } from 'context/user'
+import HomeRedirect from './views/Auth/HomeRedirect'
+import Admin from 'layouts/Admin.js'
 
-const Routes = () => {
+import { useUser } from 'context/user'
+import Loading from './components/Loading/Loading'
+
+const Routes = _ => {
   const [user, dispatchUser] = useUser()
 
   const renderRoutes = _ => {
@@ -21,12 +24,19 @@ const Routes = () => {
     return (
       <Switch>
         <Route path={`/login`} render={props => <Login {...props} />} />
-        <Redirect to='/login' />
+        <Redirect to='/' />
       </Switch>
     )
   }
+  console.log(user)
   return (
-    <>{user.status === 'loggedOut' ? renderPublicRoutes() : renderRoutes()}</>
+    <>
+      {user.status !== 'loggedOut' ? (
+        <Suspense fallback={Loading}>{renderRoutes()}</Suspense>
+      ) : (
+        renderPublicRoutes()
+      )}
+    </>
   )
 }
 
