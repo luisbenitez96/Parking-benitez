@@ -15,12 +15,14 @@ import styles from 'assets/jss/material-dashboard-react/views/dashboardStyle.js'
 
 import { vehiculosData } from '../../variables/tableData'
 import VehiculosDataPage from './VehiculosData'
+import ParkingView from 'views/Parqueadero/ParkingView'
 
 const useStyles = makeStyles(styles)
 
 export default function User() {
   const [data, setData] = useState(vehiculosData)
   const [modal, setModal] = useState(false)
+  const [parkingModal, setParkingModal] = useState(false)
   const [selected, setSelected] = useState(null)
   const classes = useStyles()
 
@@ -50,6 +52,13 @@ export default function User() {
           toggle={handleModal}
         />
       </Modal>
+      <Modal
+        openModal={parkingModal}
+        onToggleModal={() => setParkingModal(!parkingModal)}
+        title='Parqueadero'
+      >
+        <ParkingView />
+      </Modal>
       <GridItem
         xs={12}
         sm={12}
@@ -61,6 +70,9 @@ export default function User() {
       >
         <Button color='success' onClick={handleModal}>
           Agregar vehiculo
+        </Button>
+        <Button color='primary' onClick={() => setParkingModal(!parkingModal)}>
+          Ver parqueaderos
         </Button>
       </GridItem>
       <GridItem xs={12} sm={12} md={12}>
