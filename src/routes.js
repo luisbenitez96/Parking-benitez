@@ -25,7 +25,7 @@ const dashboardRoutes = [
   },
   {
     path: '/vehiculos',
-    name: 'Vehiculos',
+    name: 'Vehículos',
     icon: LocationOn,
     component: VehiculosPage,
     layout: '/admin'

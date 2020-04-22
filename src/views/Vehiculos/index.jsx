@@ -69,7 +69,7 @@ export default function User() {
         }}
       >
         <Button color='success' onClick={handleModal}>
-          Agregar vehiculo
+          Agregar vehículo
         </Button>
         <Button color='primary' onClick={() => setParkingModal(!parkingModal)}>
           Ver parqueaderos
@@ -78,9 +78,9 @@ export default function User() {
       <GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardHeader color='success'>
-            <h4 className={classes.cardTitleWhite}>Vehiculos</h4>
+            <h4 className={classes.cardTitleWhite}>Vehículos</h4>
             <p className={classes.cardCategoryWhite}>
-              Vehiculos registrados en el parqueadero
+              Vehículos registrados en el parqueadero
             </p>
           </CardHeader>
           <CardBody>

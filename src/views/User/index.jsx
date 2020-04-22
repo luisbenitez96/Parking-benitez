@@ -92,7 +92,7 @@ export default function User() {
                 'Identificación',
                 'Nombre',
                 'Apellido',
-                'Direccion',
+                'Dirección',
                 'Correo'
               ]}
               tableData={data}

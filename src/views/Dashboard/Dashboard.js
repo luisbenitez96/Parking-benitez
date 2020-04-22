@@ -37,7 +37,7 @@ const Dashboard = _ => {
             <CardFooter stats>
               <div className={classes.stats}>
                 <ChevronRight />
-                <Link href='/admin/usuarios'>Ir a seccion de usuarios</Link>
+                <Link href='/admin/usuarios'>Ir a sección de usuarios</Link>
               </div>
             </CardFooter>
           </Card>
@@ -49,12 +49,12 @@ const Dashboard = _ => {
                 <Icon>content_copy</Icon>
               </CardIcon>
               <p className={classes.cardCategory}>Sección</p>
-              <h3 className={classes.cardTitle}>Vehiculos</h3>
+              <h3 className={classes.cardTitle}>Vehículos</h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
                 <ChevronRight />
-                <a href='/admin/vehiculos'>Ir a seccion de vehiculos</a>
+                <a href='/admin/vehiculos'>Ir a sección de vehículos</a>
               </div>
             </CardFooter>
           </Card>
@@ -71,7 +71,7 @@ const Dashboard = _ => {
             <CardFooter stats>
               <div className={classes.stats}>
                 <ChevronRight />
-                <a href='/admin/balances'>Ir a seccion de balances</a>
+                <a href='/admin/balances'>Ir a sección de balances</a>
               </div>
             </CardFooter>
           </Card>
